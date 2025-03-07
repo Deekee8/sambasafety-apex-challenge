@@ -8,14 +8,10 @@ public class DataProcessor {
             List<SObject> recordsToUpdate = new List<SObject>();
             
             for (SObject record : records) {
-                try {
-                    for (String fieldName : fieldValues.keySet()) {
-                        record.put(fieldName, fieldValues.get(fieldName));
-                    }
-                    recordsToUpdate.add(record);
-                } catch (Exception e) {
-                    // Handle the error for this specific record (e.g., log the issue, send an alert)
+                for (String fieldName : fieldValues.keySet()) {
+                    record.put(fieldName, fieldValues.get(fieldName));
                 }
+                recordsToUpdate.add(record);
             }
             
             if (!recordsToUpdate.isEmpty()) {
